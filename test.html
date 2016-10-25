@@ -1,0 +1,624 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--Load the AJAX API-->
+    <!-- <<script src="charts.js" type="text/javascript" charset="utf-8" async defer></script> -->
+</head>
+
+<body>
+    <h1>Beat this document into submission</h1>
+    <table class="columns">
+        <tr>
+            <td>
+                <div id="pie_div"></div>
+            </td>
+            <td>
+                <div id="bar_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="column_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="line_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="table_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="trendlines_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="donutchart_div"></div>
+            </td>
+            <td>
+                <div id="3dPie_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="visualization_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="stepped_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="scatter_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="pie2_div"></div>
+            </td>
+            <td>
+                <div id="bar2_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="column2_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="line2_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="table2_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="trendlines2_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="donutchart2_div"></div>
+            </td>
+            <td>
+                <div id="3dPie2_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="visualization2_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="stepped2_div"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="scatter2_div"></div>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    console.log('Loaded')
+    google.load("visualization", "1", {
+        packages: ['corechart', 'table', 'bar'],
+        callback: draw
+    });
+
+    function draw() {
+        drawChart();
+        drawLineChart();
+        drawTable();
+        drawColColors();
+        drawTrendlines();
+        drawVisualization();
+        drawDonutChart();
+        draw3dPieChart();
+        drawSteppedChart();
+        window.PHANTOM_HTML_TO_PDF_READY = true;
+    }
+
+    function drawChart() {
+        console.log("Drawing..");
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+		
+					data.addRow(['Mushrooms'+0, 154]); 
+			data.addRow(['Mushrooms'+1, 66]); 
+			data.addRow(['Mushrooms'+2, 177]); 
+			data.addRow(['Mushrooms'+3, 32]); 
+			data.addRow(['Mushrooms'+4, 124]); 
+			data.addRow(['Mushrooms'+5, 150]); 
+			data.addRow(['Mushrooms'+6, 187]); 
+			data.addRow(['Mushrooms'+7, 11]); 
+			data.addRow(['Mushrooms'+8, 183]); 
+			data.addRow(['Mushrooms'+9, 142]); 
+			data.addRow(['Mushrooms'+10, 58]); 
+			data.addRow(['Mushrooms'+11, 59]); 
+			data.addRow(['Mushrooms'+12, 42]); 
+			data.addRow(['Mushrooms'+13, 164]); 
+			data.addRow(['Mushrooms'+14, 187]); 
+		
+        // Set chart options
+        var options = {
+            'title': 'How Much Pizza I Ate Last Night',
+            'width': 400,
+            'height': 300
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var pie = new google.visualization.PieChart(document.getElementById('pie_div'));
+        pie.draw(data, options);
+
+        var barChart = new google.visualization.BarChart(document.getElementById('bar_div'));
+        barChart.draw(data, options);
+
+        var pie2 = new google.visualization.PieChart(document.getElementById('pie2_div'));
+        pie2.draw(data, options);
+
+        var barChart2 = new google.visualization.BarChart(document.getElementById('bar2_div'));
+        barChart2.draw(data, options);
+        console.log(google);
+
+    }
+
+    function drawLineChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Month');
+        data.addColumn('number', 'Apples');
+        data.addColumn('number', 'Oranges');
+
+		for (var i = 0; i < Math.floor((Math.random() * 30) + 1); i++)
+			data.addRow(['Oct '+i, Math.floor((Math.random() * 100) + 1), Math.floor((Math.random() * 100) + 1)]); 
+
+			data.addRow(['Oct '+0, 154, 154]); 
+			data.addRow(['Oct '+1, 66, 66]); 
+			data.addRow(['Oct '+2, 177, 177]); 
+			data.addRow(['Oct '+3, 32, 32]); 
+			data.addRow(['Oct '+4, 124, 124]); 
+			data.addRow(['Oct '+5, 150, 150]); 
+			data.addRow(['Oct '+6, 187, 187]); 
+			data.addRow(['Oct '+7, 11, 11]); 
+			data.addRow(['Oct '+8, 183, 183]); 
+			data.addRow(['Oct '+9, 142, 142]); 
+			data.addRow(['Oct '+10, 58, 58]); 
+			data.addRow(['Oct '+11, 59, 59]); 
+			data.addRow(['Oct '+12, 42, 42]); 
+			data.addRow(['Oct '+13, 164, 164]); 
+			data.addRow(['Oct '+14, 187, 187]); 
+			
+        // Set chart options
+        var options = {
+            'width': 960,
+            'height': 300
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('line_div'));
+        chart.draw(data, options);
+        var chart2 = new google.visualization.LineChart(document.getElementById('line2_div'));
+        chart2.draw(data, options);
+    }
+
+
+    function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('number', 'Salary');
+        data.addColumn('boolean', 'Full Time Employee');
+		
+//		for (var i = 0; i < Math.floor((Math.random() * 30) + 1); i++)
+//			data.addRow(['Mike'+i, {v: 9, f: '$10,000'}, true]);
+			data.addRow(['Mike'+0, {v: 154, f: '154'}, true]);
+			data.addRow(['Mike'+1, {v: 66, f: '66'}, true]);
+			data.addRow(['Mike'+2, {v: 177, f: '177'}, true]);
+			data.addRow(['Mike'+3, {v: 32, f: '32'}, true]);
+			data.addRow(['Mike'+4, {v: 124, f: '124'}, true]);
+			data.addRow(['Mike'+5, {v: 150, f: '150'}, true]);
+			data.addRow(['Mike'+6, {v: 187, f: '187'}, true]);
+			data.addRow(['Mike'+7, {v: 11, f: '11'}, true]);
+			data.addRow(['Mike'+8, {v: 183, f: '183'}, true]);
+			data.addRow(['Mike'+9, {v: 142, f: '142'}, true]);
+			data.addRow(['Mike'+10, {v: 58, f: '58'}, true]);
+			data.addRow(['Mike'+11, {v: 59, f: '59'}, true]);
+			data.addRow(['Mike'+12, {v: 42, f: '42'}, true]);
+			data.addRow(['Mike'+13, {v: 164, f: '164'}, true]);
+			data.addRow(['Mike'+14, {v: 187, f: '187'}, true]);
+		
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {
+            showRowNumber: true,
+            width: '100%',
+            height: '100%'
+        });
+
+        var table2 = new google.visualization.Table(document.getElementById('table2_div'));
+        table2.draw(data, {
+            showRowNumber: true,
+            width: '100%',
+            height: '100%'
+        });
+    }
+
+    function drawColColors() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('timeofday', 'Time of Day');
+        data.addColumn('number', 'Motivation Level');
+        data.addColumn('number', 'Energy Level');
+
+			data.addRow([{
+                v: [0, 0, 0],
+                f: '8 am'
+            }, 154, 154]);
+			data.addRow([{
+                v: [1, 0, 0],
+                f: '8 am'
+            }, 66, 66]);
+			data.addRow([{
+                v: [2, 0, 0],
+                f: '8 am'
+            }, 177, 177]);
+			data.addRow([{
+                v: [3, 0, 0],
+                f: '8 am'
+            }, 32, 32]);
+			data.addRow([{
+                v: [4, 0, 0],
+                f: '8 am'
+            }, 124, 124]);
+			data.addRow([{
+                v: [5, 0, 0],
+                f: '8 am'
+            }, 150, 150]);
+			data.addRow([{
+                v: [6, 0, 0],
+                f: '8 am'
+            }, 187, 187]);
+			data.addRow([{
+                v: [7, 0, 0],
+                f: '8 am'
+            }, 11, 11]);
+			data.addRow([{
+                v: [8, 0, 0],
+                f: '8 am'
+            }, 183, 183]);
+			data.addRow([{
+                v: [9, 0, 0],
+                f: '8 am'
+            }, 142, 142]);
+			data.addRow([{
+                v: [10, 0, 0],
+                f: '8 am'
+            }, 58, 58]);
+			data.addRow([{
+                v: [11, 0, 0],
+                f: '8 am'
+            }, 59, 59]);
+			data.addRow([{
+                v: [12, 0, 0],
+                f: '8 am'
+            }, 42, 42]);
+			data.addRow([{
+                v: [13, 0, 0],
+                f: '8 am'
+            }, 164, 164]);
+			data.addRow([{
+                v: [14, 0, 0],
+                f: '8 am'
+            }, 187, 187]);
+
+        var options = {
+            title: 'Motivation and Energy Level Throughout the Day',
+            colors: ['#9575cd', '#33ac71'],
+            hAxis: {
+                title: 'Time of Day',
+                format: 'h:mm a',
+                viewWindow: {
+                    min: [7, 30, 0],
+                    max: [17, 30, 0]
+                }
+            },
+            vAxis: {
+                title: 'Rating (scale of 1-10)'
+            }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('column_div'));
+        chart.draw(data, options);
+
+        var chart2 = new google.visualization.ColumnChart(document.getElementById('column2_div'));
+        chart2.draw(data, options);
+    }
+
+    function drawTrendlines() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('timeofday', 'Time of Day');
+        data.addColumn('number', 'Motivation Level');
+        data.addColumn('number', 'Energy Level');
+
+			data.addRow([{
+                v: [0, 0, 0],
+                f: '8 am'
+            }, 154, 154]);
+			data.addRow([{
+                v: [1, 0, 0],
+                f: '8 am'
+            }, 66, 66]);
+			data.addRow([{
+                v: [2, 0, 0],
+                f: '8 am'
+            }, 177, 177]);
+			data.addRow([{
+                v: [3, 0, 0],
+                f: '8 am'
+            }, 32, 32]);
+			data.addRow([{
+                v: [4, 0, 0],
+                f: '8 am'
+            }, 124, 124]);
+			data.addRow([{
+                v: [5, 0, 0],
+                f: '8 am'
+            }, 150, 150]);
+			data.addRow([{
+                v: [6, 0, 0],
+                f: '8 am'
+            }, 187, 187]);
+			data.addRow([{
+                v: [7, 0, 0],
+                f: '8 am'
+            }, 11, 11]);
+			data.addRow([{
+                v: [8, 0, 0],
+                f: '8 am'
+            }, 183, 183]);
+			data.addRow([{
+                v: [9, 0, 0],
+                f: '8 am'
+            }, 142, 142]);
+			data.addRow([{
+                v: [10, 0, 0],
+                f: '8 am'
+            }, 58, 58]);
+			data.addRow([{
+                v: [11, 0, 0],
+                f: '8 am'
+            }, 59, 59]);
+			data.addRow([{
+                v: [12, 0, 0],
+                f: '8 am'
+            }, 42, 42]);
+			data.addRow([{
+                v: [13, 0, 0],
+                f: '8 am'
+            }, 164, 164]);
+			data.addRow([{
+                v: [14, 0, 0],
+                f: '8 am'
+            }, 187, 187]);
+
+        var options = {
+            title: 'Motivation and Energy Level Throughout the Day',
+            trendlines: {
+                0: {
+                    type: 'linear',
+                    lineWidth: 5,
+                    opacity: .3
+                },
+                1: {
+                    type: 'exponential',
+                    lineWidth: 10,
+                    opacity: .3
+                }
+            },
+            hAxis: {
+                title: 'Time of Day',
+                format: 'h:mm a',
+                viewWindow: {
+                    min: [7, 30, 0],
+                    max: [17, 30, 0]
+                }
+            },
+            vAxis: {
+                title: 'Rating (scale of 1-10)'
+            }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('trendlines_div'));
+        chart.draw(data, options);
+
+        var chart2 = new google.visualization.ColumnChart(document.getElementById('trendlines2_div'));
+        chart2.draw(data, options);
+    }
+
+    function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
+            ['2004/05', Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1)],
+            ['2005/06', Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1)],
+            ['2006/07', Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1)],
+            ['2007/08', Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1)],
+            ['2008/09', Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1)]
+        ]);
+
+		for (var i = 0; i < Math.floor((Math.random() * 30) + 1); i++)
+			data.addRow(['2016/12', Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1)]);
+			data.addRow(['2016/12', 154, 154, 154, 154, 154, 154]);
+			data.addRow(['2016/12', 66, 66, 66, 66, 66, 66]);
+			data.addRow(['2016/12', 177, 177, 177, 177, 177, 177]);
+			data.addRow(['2016/12', 32, 32, 32, 32, 32, 32]);
+			data.addRow(['2016/12', 124, 124, 124, 124, 124, 124]);
+			data.addRow(['2016/12', 150, 150, 150, 150, 150, 150]);
+			data.addRow(['2016/12', 187, 187, 187, 187, 187, 187]);
+			data.addRow(['2016/12', 11, 11, 11, 11, 11, 11]);
+			data.addRow(['2016/12', 183, 183, 183, 183, 183, 183]);
+			data.addRow(['2016/12', 142, 142, 142, 142, 142, 142]);
+			data.addRow(['2016/12', 58, 58, 58, 58, 58, 58]);
+			data.addRow(['2016/12', 59, 59, 59, 59, 59, 59]);
+			data.addRow(['2016/12', 42, 42, 42, 42, 42, 42]);
+			data.addRow(['2016/12', 164, 164, 164, 164, 164, 164]);
+			data.addRow(['2016/12', 187, 187, 187, 187, 187, 187]);
+
+        var options = {
+            title: 'Monthly Coffee Production by Country',
+            vAxis: {
+                title: 'Cups'
+            },
+            hAxis: {
+                title: 'Month'
+            },
+            seriesType: 'bars',
+            series: {
+                5: {
+                    type: 'line'
+                }
+            }
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('visualization_div'));
+        chart.draw(data, options);
+        var chart2 = new google.visualization.ComboChart(document.getElementById('visualization2_div'));
+        chart2.draw(data, options);
+    }
+
+    function drawDonutChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Work', Math.floor((Math.random() * 30) + 1)],
+            ['Eat', Math.floor((Math.random() * 30) + 1)],
+            ['Commute', Math.floor((Math.random() * 30) + 1)],
+            ['Watch TV', Math.floor((Math.random() * 30) + 1)],
+            ['Sleep', Math.floor((Math.random() * 30) + 1)]
+        ]);
+
+			data.addRow(['Work'+0, 154]);
+			data.addRow(['Work'+1, 66]);
+			data.addRow(['Work'+2, 177]);
+			data.addRow(['Work'+3, 32]);
+			data.addRow(['Work'+4, 124]);
+			data.addRow(['Work'+5, 150]);
+			data.addRow(['Work'+6, 187]);
+			data.addRow(['Work'+7, 11]);
+			data.addRow(['Work'+8, 183]);
+			data.addRow(['Work'+9, 142]);
+			data.addRow(['Work'+10, 58]);
+			data.addRow(['Work'+11, 59]);
+			data.addRow(['Work'+12, 42]);
+			data.addRow(['Work'+13, 164]);
+			data.addRow(['Work'+14, 187]);
+
+        var options = {
+            title: 'My Daily Activities',
+            pieHole: Math.random()
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart_div'));
+        chart.draw(data, options);
+        var chart2 = new google.visualization.PieChart(document.getElementById('donutchart2_div'));
+        chart2.draw(data, options);
+    }
+
+    function draw3dPieChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Work',  Math.floor((Math.random() * 20) + 1)],
+            ['Eat', Math.floor((Math.random() * 20) + 1)],
+            ['Commute', Math.floor((Math.random() * 20) + 1)],
+            ['Watch TV', Math.floor((Math.random() * 20) + 1)],
+            ['Sleep', Math.floor((Math.random() * 20) + 1)]
+        ]);
+
+			data.addRow(['Work'+0, 154]);
+			data.addRow(['Work'+1, 66]);
+			data.addRow(['Work'+2, 177]);
+			data.addRow(['Work'+3, 32]);
+			data.addRow(['Work'+4, 124]);
+			data.addRow(['Work'+5, 150]);
+			data.addRow(['Work'+6, 187]);
+			data.addRow(['Work'+7, 11]);
+			data.addRow(['Work'+8, 183]);
+			data.addRow(['Work'+9, 142]);
+			data.addRow(['Work'+10, 58]);
+			data.addRow(['Work'+11, 59]);
+			data.addRow(['Work'+12, 42]);
+			data.addRow(['Work'+13, 164]);
+			data.addRow(['Work'+14, 187]);
+
+        var options = {
+            title: 'My Daily Activities',
+            is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('3dPie_div'));
+        chart.draw(data, options);
+        var chart2 = new google.visualization.PieChart(document.getElementById('3dPie2_div'));
+        chart2.draw(data, options);
+    }
+
+    function drawSteppedChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Director (Year)', 'Rotten Tomatoes', 'IMDB'],
+            ['Alfred Hitchcock (1935)', Math.floor((Math.random() * 20) + 1), Math.floor((Math.random() * 20) + 1)],
+            ['Ralph Thomas (1959)', Math.floor((Math.random() * 20) + 1), Math.floor((Math.random() * 20) + 1)],
+            ['Don Sharp (1978)', Math.floor((Math.random() * 20) + 1), Math.floor((Math.random() * 20) + 1)],
+            ['James Hawes (2008)', Math.floor((Math.random() * 20) + 1), Math.floor((Math.random() * 20) + 1)]
+        ]);
+
+		for (var i = 0; i < Math.floor((Math.random() * 30) + 1); i++)
+			data.addRow(['Alfred Hitchcock (1935)'+i, Math.floor((Math.random() * 20) + 1), Math.floor((Math.random() * 20) + 1)]);
+			data.addRow(['Alfred Hitchcock (1935)'+0, 154, 154]);
+			data.addRow(['Alfred Hitchcock (1935)'+1, 66, 66]);
+			data.addRow(['Alfred Hitchcock (1935)'+2, 177, 177]);
+			data.addRow(['Alfred Hitchcock (1935)'+3, 32, 32]);
+			data.addRow(['Alfred Hitchcock (1935)'+4, 124, 124]);
+			data.addRow(['Alfred Hitchcock (1935)'+5, 150, 150]);
+			data.addRow(['Alfred Hitchcock (1935)'+6, 187, 187]);
+			data.addRow(['Alfred Hitchcock (1935)'+7, 11, 11]);
+			data.addRow(['Alfred Hitchcock (1935)'+8, 183, 183]);
+			data.addRow(['Alfred Hitchcock (1935)'+9, 142, 142]);
+			data.addRow(['Alfred Hitchcock (1935)'+10, 58, 58]);
+			data.addRow(['Alfred Hitchcock (1935)'+11, 59, 59]);
+			data.addRow(['Alfred Hitchcock (1935)'+12, 42, 42]);
+			data.addRow(['Alfred Hitchcock (1935)'+13, 164, 164]);
+			data.addRow(['Alfred Hitchcock (1935)'+14, 187, 187]);
+
+		var options = {
+            title: 'The decline of \'The 39 Steps\'',
+            vAxis: {
+                title: 'Accumulated Rating'
+            },
+            isStacked: true
+        };
+
+        var chart = new google.visualization.SteppedAreaChart(document.getElementById('stepped_div'));
+        chart.draw(data, options);
+        var chart2 = new google.visualization.SteppedAreaChart(document.getElementById('stepped2_div'));
+        chart2.draw(data, options);
+        var scatter = new google.visualization.ScatterChart(document.getElementById('scatter_div'));
+        scatter.draw(data, options);
+        var scatter2 = new google.visualization.ScatterChart(document.getElementById('scatter2_div'));
+        scatter2.draw(data, options);
+    }
+    </script>
+</body>
+
+</html>
