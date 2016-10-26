@@ -12,11 +12,8 @@ import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.io.*;
+import java.net.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +21,13 @@ import java.util.Map;
 import java.util.Random;
 
 @RestController
-@RequestMapping("pdf")
+//@RequestMapping("pdf")
 public class PdfController {
 
     private final Configuration cfg;
 
     public PdfController() {
-        cfg = new Configuration();
+        cfg = new Configuration(Configuration.VERSION_2_3_25);
         cfg.setClassForTemplateLoading(getClass(), "/templates/");
         cfg.setDefaultEncoding("UTF-8");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
@@ -44,7 +41,7 @@ public class PdfController {
 			generateRandomValues(values.getVals());
 			data.put("values", values);
 
-			Template temp = cfg.getTemplate("test.ftlh");
+			Template temp = cfg.getTemplate("test.ftl");
 			// Generowanie pliku z html
 /*			Writer file = new FileWriter (new File("test.html"));
 			temp.process(data, file);
@@ -55,7 +52,6 @@ public class PdfController {
 */
 			RestTemplate restTemplate = new RestTemplate();
 			URI url = new URI("http://localhost:3000/generatehtml");
-			ResourceReader reader = new StreamResourceReader(response);
 			RequestCallback cb = clientHttpRequest -> {
 				Writer writer = new OutputStreamWriter(clientHttpRequest.getBody());
 				clientHttpRequest.getHeaders().setContentType(MediaType.TEXT_HTML);
@@ -66,6 +62,8 @@ public class PdfController {
 					e.printStackTrace();
 				}
 			};
+
+			ResourceReader reader = new StreamResourceReader(response);
 			restTemplate.execute(url, HttpMethod.POST, cb, new StreamResponseExtractor(reader));
 
 		} catch (IOException e) {

@@ -316,8 +316,6 @@
             ['2008/09', Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1)]
         ]);
 
-		for (var i = 0; i < Math.floor((Math.random() * 30) + 1); i++)
-			data.addRow(['2016/12', Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1), Math.floor((Math.random() * 2000) + 1)]);
 		<#list values.vals as v>
 			data.addRow(['2016/12', ${v}, ${v}, ${v}, ${v}, ${v}, ${v}]);
 		</#list>
@@ -403,8 +401,6 @@
             ['James Hawes (2008)', Math.floor((Math.random() * 20) + 1), Math.floor((Math.random() * 20) + 1)]
         ]);
 
-		for (var i = 0; i < Math.floor((Math.random() * 30) + 1); i++)
-			data.addRow(['Alfred Hitchcock (1935)'+i, Math.floor((Math.random() * 20) + 1), Math.floor((Math.random() * 20) + 1)]);
 		<#list values.vals as v>
 			data.addRow(['Alfred Hitchcock (1935)'+${v?index}, ${v}, ${v}]);
 		</#list>
